@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
 using static System.Console;
-using System.Data.SqlClient;
 
 
 namespace COMP2614Assign04
 {
+	/// <summary>
+	/// Helper class to provide access to shared functionality accross applicaiton;
+	/// Repo: https://github.com/kriss3/BCIT_WinAppDev_2614_COMP2614Assign04.git
+	/// </summary>
 	class Helper
 	{
 		public static void PrintCustomers(CustomerCollection customers)
@@ -24,6 +24,11 @@ namespace COMP2614Assign04
 			Console.WriteLine(divider);
 		}
 
+		/// <summary>
+		/// Helper mehod to print filter, incrementing index only for display purpose;
+		/// Add a static value of 'ALL' for additional filtering;
+		/// </summary>
+		/// <param name="provinces">Generic collection of string types - collection to iterate over objects of the collection</param>
 		public static void PrintProvinceFilter(IList<string> provinces)
 		{
 			provinces.Add("ALL");

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace COMP2614Assign04
 {
+	/// <summary>
+	/// Repository class to handle database operations;
+	/// </summary>
 	class CustomerRepository
 	{
-		private static string GetConnectionString()
-		{
-			return ConfigurationManager.AppSettings["connString"];
-		}
+		#region Public Methods
 
+		/// <summary>
+		/// Methods to retrieve data required to build dynamic filter
+		/// </summary>
+		/// <returns>Generic collection of String</returns>
 		public static IList<String> GetProvinceFilter()
 		{
 			var provinces = new List<String>();
@@ -42,6 +43,11 @@ namespace COMP2614Assign04
 			return provinces;
 		}
 
+		/// <summary>
+		/// Method to search Customers by province;
+		/// </summary>
+		/// <param name="province">Two character string indicating Canadian province</param>
+		/// <returns>collection of Customer objects</returns>
 		public static CustomerCollection GetCustomersByProvince(string province)
 		{
 			CustomerCollection customersByProvince;
@@ -104,6 +110,10 @@ namespace COMP2614Assign04
 			}
 		}
 
+		/// <summary>
+		/// Excercise method to get ALL customers from underlying source;
+		/// </summary>
+		/// <returns>collectin of customer objects</returns>
 		public static CustomerCollection GetAllCustomers()
 		{
 			CustomerCollection customers;
@@ -155,5 +165,16 @@ namespace COMP2614Assign04
 			}
 			return customers;
 		}
+
+		#endregion
+
+		#region Private Methods
+
+		private static string GetConnectionString()
+		{
+			return ConfigurationManager.AppSettings["connString"];
+		}
+
+		#endregion
 	}
 }
